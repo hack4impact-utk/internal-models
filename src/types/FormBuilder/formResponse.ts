@@ -1,11 +1,11 @@
 import base from "../base";
 import zForm, { Form } from "./form";
-import zQuestionBase from "./Questions/questionBase";
 import { z } from "zod";
+import zFormQuestion from "./formQuestion";
 
 const zBaseFormResponse = base.extend({
   questionResponses: z.object({
-    question: zQuestionBase,
+    question: zFormQuestion,
     answer: z.union([z.string(), z.number()]).optional(),
   }),
   responderEmail: z.string().optional(),

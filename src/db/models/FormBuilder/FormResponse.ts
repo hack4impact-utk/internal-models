@@ -6,7 +6,7 @@ const FormResponseSchema = new Schema({
   questionResponses: [
     {
       question: {
-        ref: "Question",
+        ref: "FormQuestion",
         type: Schema.Types.ObjectId,
         required: true,
       },
