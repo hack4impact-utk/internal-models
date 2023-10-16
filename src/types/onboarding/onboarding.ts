@@ -5,7 +5,7 @@ import zOnboardingStep from './onboardingStep';
 export const zOnboarding = zBase.extend({
   title: z.string(),
   description: z.string().optional(),
-  steps: zOnboardingStep.array(),
+  steps: z.array(zOnboardingStep),
 });
 
 export type Onboarding = z.infer<typeof zOnboarding>;

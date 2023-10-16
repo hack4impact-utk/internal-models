@@ -16,7 +16,7 @@ export type TeamRole = z.infer<typeof TeamRole>;
 
 const zBaseTeamMember = zBase.extend({
   role: TeamRole,
-  terms: zTerm.array(),
+  terms: z.array(zTerm),
 });
 
 type BaseTeamMember = z.infer<typeof zBaseTeamMember>;

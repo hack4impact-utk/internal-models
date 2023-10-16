@@ -30,9 +30,9 @@ export const zMember = zBase.extend({
   linkedinUrl: z.string().url().optional(),
   confirmedAt: z.date(),
   imageUrl: z.string().url().optional(),
-  teams: zTeamMember.array(),
-  activeTerms: zTermMember.array(),
-  onboardings: zOnboardingStatus.array(),
+  teams: z.array(zTeamMember),
+  activeTerms: z.array(zTermMember),
+  onboardings: z.array(zOnboardingStatus),
 });
 
 export type Member = z.infer<typeof zMember>;

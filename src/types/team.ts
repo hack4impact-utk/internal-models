@@ -7,8 +7,8 @@ import zRoleOnboarding from './onboarding/roleOnboarding';
 
 export const zTeam = zBase.extend({
   name: z.string(),
-  members: zTeamMember.array(),
-  terms: zTerm.array(),
+  members: z.array(zTeamMember),
+  terms: z.array(zTerm),
   alwaysActive: z.boolean(),
   confirmedAt: z.date(),
   vaultWardenUrl: z.string().url().optional(),
