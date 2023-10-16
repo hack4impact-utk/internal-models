@@ -1,0 +1,34 @@
+import { z } from 'zod';
+import zBase from './base';
+import zMember, { Member } from './member';
+import zTerm, { Term } from './term';
+import zTeam, { Team } from './team';
+
+export const zTeamRole = z.enum([
+  'Member',
+  'Leader',
+  'Director',
+  'Developer',
+  'Product Manager',
+  'Tech Lead',
+]);
+export type TeamRole = z.infer<typeof zTeamRole>;
+
+const zBaseTeamMember = zBase.extend({
+  role: zTeamRole,
+  terms: zTerm.array(),
+});
+
+type BaseTeamMember = z.infer<typeof zBaseTeamMember>;
+
+export type TeamMember = BaseTeamMember & {
+  member: Member;
+  team: Team;
+};
+
+const zTeamMember: z.ZodType<TeamMember> = zBaseTeamMember.extend({
+  member: z.lazy(() => zMember),
+  team: z.lazy(() => zTeam),
+});
+
+export default zTeamMember;
