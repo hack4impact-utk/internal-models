@@ -1,7 +1,7 @@
 import { z } from "zod";
 import zQuestionBase from "./questionBase";
 
-const FileType = z.enum([
+export const fileTypes = [
   "Document",
   "Presentation",
   "Spreadsheet",
@@ -10,10 +10,15 @@ const FileType = z.enum([
   "Image",
   "Video",
   "Audio",
-]);
-type FileType = z.infer<typeof FileType>;
+] as const;
+
+export const zFileType = z.enum(fileTypes);
+export type FileType = z.infer<typeof zFileType>;
 
 const zFileUploadQuestion = zQuestionBase.extend({
-  supportedFileTypes: FileType,
+  supportedFileTypes: zFileType,
   maxFileSize: z.number().int(),
 });
+
+export type FileUploadQuestion = z.infer<typeof zFileUploadQuestion>;
+export default zFileUploadQuestion;

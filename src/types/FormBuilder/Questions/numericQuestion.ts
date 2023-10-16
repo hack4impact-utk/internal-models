@@ -6,3 +6,7 @@ const zNumericQuestion = zQuestionBase.extend({
   minVal: z.number(),
   maxVal: z.number(),
 });
+
+export type NumericQuestion = z.infer<typeof zNumericQuestion>;
+
+export default zNumericQuestion;
