@@ -1,4 +1,5 @@
-import { Schema } from 'mongoose';
+import { Member } from '@/types/member';
+import { Document, Model, Schema, model, models } from 'mongoose';
 
 const MemberSchema = new Schema(
   {
@@ -54,3 +55,8 @@ const MemberSchema = new Schema(
 );
 
 MemberSchema.index({ netid: 1 }, { unique: true });
+
+export type MemberDocument = Omit<Member, '_id'> & Document;
+
+export default (models.Member as Model<MemberDocument>) ||
+  model<MemberDocument>('Member', MemberSchema);

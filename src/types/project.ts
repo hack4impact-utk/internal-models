@@ -2,21 +2,23 @@ import { z } from 'zod';
 import zBase from './base';
 import zTeam, { Team } from './team';
 
-const ProjectStatus = z.enum([
+export const projectStatuses = [
   'Prospective',
   'Accepted',
   'Rejected',
   'Active',
   'Completed',
-]);
+] as const;
 
-export type ProjectStatus = z.infer<typeof ProjectStatus>;
+export const zProjectStatus = z.enum(projectStatuses);
+
+export type ProjectStatus = z.infer<typeof zProjectStatus>;
 
 const zBaseProject = zBase.extend({
   name: z.string(),
   contactName: z.string(),
   contactEmail: z.string().email(),
-  status: ProjectStatus,
+  status: zProjectStatus,
   description: z.string(),
   impactAreas: z.string().array(),
   orgUrl: z.string().url().optional(),

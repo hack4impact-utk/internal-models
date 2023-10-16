@@ -14,7 +14,7 @@ const zTeam = zBase.extend({
   vaultWardenUrl: z.string().url().optional(),
   notionUrl: z.string().url().optional(),
   githubUrl: z.string().url().optional(),
-  project: zProject,
+  project: zProject.optional(),
   onboardings: zRoleOnboarding,
 });
 
