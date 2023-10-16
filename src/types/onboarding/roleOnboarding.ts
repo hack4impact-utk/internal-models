@@ -4,7 +4,7 @@ import zOnboarding from './onboarding';
 
 export const zRoleOnboarding = z.object({
   role: TeamRole,
-  onboardings: zOnboarding.array(),
+  onboardings: z.array(zOnboarding),
 });
 
 export type RoleOnboarding = z.infer<typeof zRoleOnboarding>;

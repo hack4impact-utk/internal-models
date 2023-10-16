@@ -1,32 +1,32 @@
-import { z } from "zod";
-import base from "../base";
-import zForm, { Form } from "./form";
+import { z } from 'zod';
+import base from '../base';
+import zForm, { Form } from './form';
 
 export const formQuestionTypes = [
-  "Numeric",
-  "Text",
-  "FileUpload",
-  "MultipleChoice",
+  'Numeric',
+  'Text',
+  'FileUpload',
+  'MultipleChoice',
 ] as const;
 
 export const zFormQuestionType = z.enum(formQuestionTypes);
 export type FormQuestionType = z.infer<typeof zFormQuestionType>;
 
 export const fileTypes = [
-  "Document",
-  "Presentation",
-  "Spreadsheet",
-  "Drawing",
-  "PDF",
-  "Image",
-  "Video",
-  "Audio",
+  'Document',
+  'Presentation',
+  'Spreadsheet',
+  'Drawing',
+  'PDF',
+  'Image',
+  'Video',
+  'Audio',
 ] as const;
 
 export const zFileType = z.enum(fileTypes);
 export type FileType = z.infer<typeof zFileType>;
 
-export const multipleChoiceTypes = ["Single", "Multiple", "Ranked"] as const;
+export const multipleChoiceTypes = ['Single', 'Multiple', 'Ranked'] as const;
 
 export const zMultipleChoiceType = z.enum(multipleChoiceTypes);
 export type MultipleChoiceType = z.infer<typeof zMultipleChoiceType>;
@@ -52,7 +52,7 @@ const zFormQuestionBase = base.extend({
     .optional(),
   multipleChoiceOptions: z
     .object({
-      options: z.string().array(),
+      options: z.array(z.string()),
       allowOther: z.boolean(),
       type: zMultipleChoiceType,
     })

@@ -20,7 +20,7 @@ const zBaseProject = zBase.extend({
   contactEmail: z.string().email(),
   status: zProjectStatus,
   description: z.string(),
-  impactAreas: z.string().array(),
+  impactAreas: z.array(z.string()),
   orgUrl: z.string().url().optional(),
   deployUrl: z.string().url().optional(),
   notes: z.string().optional(),

@@ -4,7 +4,7 @@ import zOnboardingStepStatus from './onboardingStepStatus';
 
 export const zOnboardingStatus = z.object({
   onboarding: zOnboarding,
-  steps: zOnboardingStepStatus.array(),
+  steps: z.array(zOnboardingStepStatus),
   completed: z.boolean(),
 });
 
