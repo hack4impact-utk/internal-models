@@ -34,7 +34,7 @@ export type MultipleChoiceType = z.infer<typeof zMultipleChoiceType>;
 const zFormQuestionBase = base.extend({
   title: z.string(),
   description: z.string(),
-  required: z.boolean(),
+  isRequired: z.boolean(),
   questionType: zFormQuestionType,
   numericOptions: z
     .object({
