@@ -18,7 +18,7 @@ export const zTermMember = z.object({
 });
 export type TermMember = z.infer<typeof zTermMember>;
 
-const zMember = zBase.extend({
+export const zMember = zBase.extend({
   firstName: z.string(),
   lastName: z.string(),
   netid: z.string(),

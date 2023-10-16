@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import zOnboardingStep from './onboardingStep';
 
-const zOnboardingStepStatus = z.object({
+export const zOnboardingStepStatus = z.object({
   step: zOnboardingStep,
   completed: z.boolean(),
 });

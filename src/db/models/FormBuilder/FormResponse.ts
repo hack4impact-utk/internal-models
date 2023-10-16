@@ -1,12 +1,12 @@
-import { model, Schema, Document, models, Model } from "mongoose";
-import { FormResponse } from "../../../types/FormBuilder/formResponse";
+import { model, Schema, Document, models, Model } from 'mongoose';
+import { FormResponse } from '@/types/FormBuilder/formResponse';
 
 const FormResponseSchema = new Schema({
-  form: { ref: "Form", type: Schema.Types.ObjectId, required: true },
+  form: { ref: 'Form', type: Schema.Types.ObjectId, required: true },
   questionResponses: [
     {
       question: {
-        ref: "Question",
+        ref: 'Question',
         type: Schema.Types.ObjectId,
         required: true,
       },
@@ -16,11 +16,11 @@ const FormResponseSchema = new Schema({
   responderEmail: { type: String, required: false },
 });
 
-export type FormResponseDocument = Omit<FormResponse, "_id"> & Document;
+export type FormResponseDocument = Omit<FormResponse, '_id'> & Document;
 
 export default (models.FormResponse as Model<FormResponseDocument>) ||
   model<FormResponseDocument>(
-    "FormResponse",
+    'FormResponse',
     FormResponseSchema,
-    "formResponses"
+    'formResponses'
   );

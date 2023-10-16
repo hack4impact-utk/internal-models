@@ -1,3 +1,4 @@
+import { Team } from '@/types/team';
 import { Document, Model, Schema, model, models } from 'mongoose';
 
 const TeamSchema = new Schema(
@@ -41,3 +42,7 @@ const TeamSchema = new Schema(
     timestamps: true,
   }
 );
+export type TeamDocument = Omit<Team, '_id'> & Document;
+
+export default (models.Team as Model<TeamDocument>) ||
+  model<TeamDocument>('Team', TeamSchema);

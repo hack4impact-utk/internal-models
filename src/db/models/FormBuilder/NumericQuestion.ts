@@ -1,9 +1,9 @@
-import { model, Schema, Document, models, Model } from "mongoose";
-import { QuestionBaseSchema } from "./QuestionBase";
-import { NumericQuestion } from "../../../types/FormBuilder/Questions/numericQuestion";
+import { model, Schema, Document, models, Model } from 'mongoose';
+import { QuestionBaseSchema } from './QuestionBase';
+import { NumericQuestion } from '@/types/FormBuilder/Questions/numericQuestion';
 
 const NumericQuestionSchema = QuestionBaseSchema.discriminator(
-  "NumericQuestion",
+  'NumericQuestion',
   new Schema({
     allowDecimals: { type: Schema.Types.Boolean, required: true },
     minVal: { type: Schema.Types.Number, required: false },
@@ -11,11 +11,11 @@ const NumericQuestionSchema = QuestionBaseSchema.discriminator(
   })
 );
 
-export type NumericQuestionDocument = Omit<NumericQuestion, "_id"> & Document;
+export type NumericQuestionDocument = Omit<NumericQuestion, '_id'> & Document;
 
 export default (models.NumericQuestion as Model<NumericQuestionDocument>) ||
   model<NumericQuestionDocument>(
-    "NumericQuestion",
+    'NumericQuestion',
     NumericQuestionSchema,
-    "questions"
+    'questions'
   );

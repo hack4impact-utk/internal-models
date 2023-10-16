@@ -1,12 +1,12 @@
-import { model, Schema, Document, models, Model } from "mongoose";
-import { QuestionBaseSchema } from "./QuestionBase";
+import { model, Schema, Document, models, Model } from 'mongoose';
+import { QuestionBaseSchema } from './QuestionBase';
 import {
   FileUploadQuestion,
   fileTypes,
-} from "../../../types/FormBuilder/Questions/FileUploadQuestion";
+} from '@/types/FormBuilder/Questions/fileUploadQuestion';
 
 const FileUploadQuestionSchema = QuestionBaseSchema.discriminator(
-  "FileUploadQuestion",
+  'FileUploadQuestion',
   new Schema({
     supportedFileTypes: {
       type: String,
@@ -17,12 +17,12 @@ const FileUploadQuestionSchema = QuestionBaseSchema.discriminator(
   })
 );
 
-export type FileUploadQuestionDocument = Omit<FileUploadQuestion, "_id"> &
+export type FileUploadQuestionDocument = Omit<FileUploadQuestion, '_id'> &
   Document;
 
 export default (models.FileUploadQuestion as Model<FileUploadQuestionDocument>) ||
   model<FileUploadQuestionDocument>(
-    "FileUploadQuestion",
+    'FileUploadQuestion',
     FileUploadQuestionSchema,
-    "questions"
+    'questions'
   );

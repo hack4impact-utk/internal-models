@@ -1,7 +1,7 @@
-import { z } from "zod";
-import zQuestionBase from "./questionBase";
+import { z } from 'zod';
+import zQuestionBase from './questionBase';
 
-const zTextQuestion = zQuestionBase.extend({
+export const zTextQuestion = zQuestionBase.extend({
   isParagraph: z.boolean(),
 });
 

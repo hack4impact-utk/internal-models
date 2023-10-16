@@ -32,7 +32,7 @@ export type Project = BaseProject & {
   team: Team;
 };
 
-const zProject: z.ZodType<Project> = zBaseProject.extend({
+export const zProject: z.ZodType<Project> = zBaseProject.extend({
   team: zTeam,
 });
 

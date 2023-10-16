@@ -47,6 +47,7 @@ const MemberSchema = new Schema(
       type: String,
       required: false,
     },
+    termMember: {},
   },
   {
     versionKey: false,

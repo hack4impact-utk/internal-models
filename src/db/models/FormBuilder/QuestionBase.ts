@@ -1,4 +1,4 @@
-import { model, Schema, Document, models, Model } from "mongoose";
+import { model, Schema, Document, models, Model } from 'mongoose';
 
 export const QuestionBaseSchema = new Schema({
   title: { type: String, required: true },

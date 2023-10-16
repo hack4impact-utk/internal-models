@@ -1,21 +1,21 @@
-import { z } from "zod";
-import zQuestionBase from "./questionBase";
+import { z } from 'zod';
+import zQuestionBase from './questionBase';
 
 export const multipleChoiceTypes = [
-  "Document",
-  "Presentation",
-  "Spreadsheet",
-  "Drawing",
-  "PDF",
-  "Image",
-  "Video",
-  "Audio",
+  'Document',
+  'Presentation',
+  'Spreadsheet',
+  'Drawing',
+  'PDF',
+  'Image',
+  'Video',
+  'Audio',
 ] as const;
 
-const zMultipleChoiceType = z.enum(multipleChoiceTypes);
+export const zMultipleChoiceType = z.enum(multipleChoiceTypes);
 type MultipleChoiceType = z.infer<typeof zMultipleChoiceType>;
 
-const zMultipleChoiceQuestion = zQuestionBase.extend({
+export const zMultipleChoiceQuestion = zQuestionBase.extend({
   options: z.string().array(),
   allowOther: z.boolean(),
   type: zMultipleChoiceType,

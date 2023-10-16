@@ -1,16 +1,16 @@
-import { z } from "zod";
-import base from "../base";
-import zFormResponse from "./formResponse";
-import zNumericQuestion from "./Questions/numericQuestion";
-import zTextQuestion from "./Questions/textQuestion";
-import zFileUploadQuestion from "./Questions/FileUploadQuestion";
-import zMultipleChoiceQuestion from "./Questions/MultipleChoiceQuestion";
+import { z } from 'zod';
+import base from '../base';
+import zFormResponse from './formResponse';
+import zNumericQuestion from './Questions/numericQuestion';
+import zTextQuestion from './Questions/textQuestion';
+import zFileUploadQuestion from './Questions/fileUploadQuestion';
+import zMultipleChoiceQuestion from './Questions/multipleChoiceQuestion';
 
-export const responderTypes = ["Member", "Student", "Anyone"] as const;
+export const responderTypes = ['Member', 'Student', 'Anyone'] as const;
 export const zResponderType = z.enum(responderTypes);
 export type ResponderType = z.infer<typeof zResponderType>;
 
-const zForm = base.extend({
+export const zForm = base.extend({
   questions: z.union([
     zNumericQuestion,
     zTextQuestion,
