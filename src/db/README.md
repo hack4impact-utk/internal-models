@@ -1,3 +1,3 @@
 # Database
 
-This folder contains all Mongoose model and action definitions for our various internal projects.
+This folder contains all Mongoose schema definitions and actions used across our various internal projects
