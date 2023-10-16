@@ -1,9 +1,9 @@
 import { z } from 'zod';
-import { zTeamRole } from '../teamMember';
+import { TeamRole } from '../teamMember';
 import zOnboarding from './onboarding';
 
 const zRoleOnboarding = z.object({
-  role: zTeamRole,
+  role: TeamRole,
   onboardings: zOnboarding.array(),
 });
 

@@ -4,17 +4,17 @@ import zTeamMember from './teamMember';
 import zTerm from './term';
 import zOnboardingStatus from './onboarding/onboardingStatus';
 
-export const zOrganizationRole = z.enum([
+export const OrganizationRole = z.enum([
   'Director',
   'Executive',
   'Member',
   'Alumni',
 ]);
-export type OrganizationRole = z.infer<typeof zOrganizationRole>;
+export type OrganizationRole = z.infer<typeof OrganizationRole>;
 
 export const zTermMember = z.object({
   term: zTerm,
-  orgRole: zOrganizationRole,
+  orgRole: OrganizationRole,
 });
 export type TermMember = z.infer<typeof zTermMember>;
 

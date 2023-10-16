@@ -1,7 +1,5 @@
 import { z } from 'zod';
 
-type Semester = 'Fall' | 'Spring';
-
 function isValidTerm(term: string): boolean {
   const [semester, year, ...rest] = term.split(' ');
 

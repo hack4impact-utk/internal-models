@@ -1,10 +1,10 @@
 import { z } from 'zod';
 import zBase from './base';
 import zMember, { Member } from './member';
-import zTerm, { Term } from './term';
+import zTerm from './term';
 import zTeam, { Team } from './team';
 
-export const zTeamRole = z.enum([
+export const TeamRole = z.enum([
   'Member',
   'Leader',
   'Director',
@@ -12,10 +12,10 @@ export const zTeamRole = z.enum([
   'Product Manager',
   'Tech Lead',
 ]);
-export type TeamRole = z.infer<typeof zTeamRole>;
+export type TeamRole = z.infer<typeof TeamRole>;
 
 const zBaseTeamMember = zBase.extend({
-  role: zTeamRole,
+  role: TeamRole,
   terms: zTerm.array(),
 });
 
