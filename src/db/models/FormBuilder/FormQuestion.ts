@@ -10,7 +10,7 @@ export const FormQuestionSchema = new Schema({
   form: { ref: "Form", type: Schema.Types.ObjectId, required: true },
   title: { type: Schema.Types.String, required: true },
   description: { type: Schema.Types.String, required: false },
-  required: { type: Schema.Types.Boolean, required: true },
+  isRequired: { type: Schema.Types.Boolean, required: true },
   questionType: {
     type: Schema.Types.String,
     enum: formQuestionTypes,
