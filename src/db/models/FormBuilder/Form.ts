@@ -2,9 +2,12 @@ import { model, Schema, Document, models, Model } from "mongoose";
 import { Form, responderTypes } from "@/types/FormBuilder/form";
 
 const FormSchema = new Schema({
-  questions: [
-    { type: Schema.Types.ObjectId, ref: "FormQuestion", required: true },
-  ],
+  questions: {
+    type: [
+      { type: Schema.Types.ObjectId, ref: "FormQuestion", required: true },
+    ],
+    required: true,
+  },
   responder: {
     type: String,
     enum: responderTypes,
