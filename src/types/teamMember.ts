@@ -4,14 +4,16 @@ import zMember, { Member } from './member';
 import zTerm from './term';
 import zTeam, { Team } from './team';
 
-export const TeamRole = z.enum([
+export const teamRoles = [
   'Member',
   'Leader',
   'Director',
   'Developer',
   'Product Manager',
   'Tech Lead',
-]);
+] as const;
+
+export const TeamRole = z.enum(teamRoles);
 export type TeamRole = z.infer<typeof TeamRole>;
 
 const zBaseTeamMember = zBase.extend({

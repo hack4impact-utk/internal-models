@@ -1,15 +1,17 @@
 import { z } from 'zod';
-import zBase from './base';
+import zBase, { Base } from './base';
 import zTeamMember from './teamMember';
 import zTerm from './term';
 import zOnboardingStatus from './onboarding/onboardingStatus';
 
-export const OrganizationRole = z.enum([
+export const organizationRoles = [
   'Director',
   'Executive',
   'Member',
   'Alumni',
-]);
+] as const;
+
+export const OrganizationRole = z.enum(organizationRoles);
 export type OrganizationRole = z.infer<typeof OrganizationRole>;
 
 export const zTermMember = z.object({

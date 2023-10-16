@@ -1,3 +1,4 @@
+import { teamRoles } from '@/types';
 import { Team } from '@/types/team';
 import { Document, Model, Schema, model, models } from 'mongoose';
 
@@ -6,11 +7,6 @@ const TeamSchema = new Schema(
     name: {
       type: String,
       required: true,
-    },
-    project: {
-      type: Schema.Types.ObjectId,
-      ref: 'Project',
-      required: false,
     },
     terms: {
       type: [String],
@@ -35,6 +31,32 @@ const TeamSchema = new Schema(
     githubUrl: {
       type: String,
       required: false,
+    },
+    members: {
+      type: [Schema.Types.ObjectId],
+      ref: 'Member',
+      required: true,
+    },
+    project: {
+      type: Schema.Types.ObjectId,
+      ref: 'Project',
+      required: false,
+    },
+    onboardings: {
+      type: [
+        {
+          role: {
+            type: String,
+            enum: teamRoles,
+            required: true,
+          },
+          onboardings: {
+            type: [Schema.Types.ObjectId],
+            required: true,
+          },
+        },
+      ],
+      required: true,
     },
   },
   {

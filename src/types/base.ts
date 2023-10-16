@@ -7,4 +7,6 @@ export const zBase = z.object({
   updatedAt: z.date(),
 });
 
+export type Base = z.infer<typeof zBase>;
+
 export default zBase;
