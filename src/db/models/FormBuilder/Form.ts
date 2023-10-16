@@ -20,7 +20,7 @@ const FormSchema = new Schema({
   ],
 });
 
-export type FormDocument = Omit<Form, "_id"> & Document;
+export type FormDocument = Form & Document;
 
 export default (models.Form as Model<FormDocument>) ||
   model<FormDocument>("Form", FormSchema, "forms");

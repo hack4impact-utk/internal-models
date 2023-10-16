@@ -3,7 +3,7 @@ import zFormQuestion from "./formQuestion";
 import base from "../base";
 import zForm, { Form } from "./form";
 
-const zBaseFormResponse = base.extend({
+const zBaseFormSubmission = base.extend({
   questionResponses: z.object({
     question: zFormQuestion,
     answer: z.union([z.string(), z.number()]).optional(),
@@ -11,10 +11,13 @@ const zBaseFormResponse = base.extend({
   responderEmail: z.string().optional(),
 });
 
-export type FormResponse = z.infer<typeof zBaseFormResponse> & { form: Form };
+export type FormSubmission = z.infer<typeof zBaseFormSubmission> & {
+  form: Form;
+};
 
-export const zFormResponse: z.ZodType<FormResponse> = zBaseFormResponse.extend({
-  form: z.lazy(() => zForm),
-});
+export const zFormSubmission: z.ZodType<FormSubmission> =
+  zBaseFormSubmission.extend({
+    form: z.lazy(() => zForm),
+  });
 
-export default zFormResponse;
+export default zFormSubmission;
