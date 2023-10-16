@@ -17,40 +17,46 @@ export const FormQuestionSchema = new Schema({
     required: true,
   },
   numericOptions: {
-    allowDecimals: {
-      type: Schema.Types.Boolean,
-      required: true,
-    },
-    minVal: {
-      type: Schema.Types.Number,
-      required: false,
-    },
-    maxVal: {
-      type: Schema.Types.Number,
-      required: false,
+    type: {
+      allowDecimals: {
+        type: Schema.Types.Boolean,
+        required: true,
+      },
+      minVal: {
+        type: Schema.Types.Number,
+        required: false,
+      },
+      maxVal: {
+        type: Schema.Types.Number,
+        required: false,
+      },
     },
     required: false,
   },
   textOptions: {
-    isParagraph: { type: Schema.Types.Boolean, required: true },
+    type: { isParagraph: { type: Schema.Types.Boolean, required: true } },
     required: false,
   },
   fileUploadOptions: {
-    maxFileSize: { type: Schema.Types.Number, required: true },
-    supportedFileTypes: {
-      type: Schema.Types.String,
-      enum: fileTypes,
-      required: true,
+    type: {
+      maxFileSize: { type: Schema.Types.Number, required: true },
+      supportedFileTypes: {
+        type: Schema.Types.String,
+        enum: fileTypes,
+        required: true,
+      },
     },
     required: false,
   },
   multipleChoiceOptions: {
-    options: [{ type: Schema.Types.String, requried: true }],
-    allowOther: { type: Schema.Types.Boolean, required: true },
     type: {
-      type: Schema.Types.Boolean,
-      enum: multipleChoiceTypes,
-      required: true,
+      options: [{ type: Schema.Types.String, requried: true }],
+      allowOther: { type: Schema.Types.Boolean, required: true },
+      type: {
+        type: Schema.Types.Boolean,
+        enum: multipleChoiceTypes,
+        required: true,
+      },
     },
     required: false,
   },

@@ -3,16 +3,19 @@ import { FormResponse } from "@/types/FormBuilder/formResponse";
 
 const FormResponseSchema = new Schema({
   form: { ref: "Form", type: Schema.Types.ObjectId, required: true },
-  questionResponses: [
-    {
-      question: {
-        ref: "FormQuestion",
-        type: Schema.Types.ObjectId,
-        required: true,
+  questionResponses: {
+    type: [
+      {
+        question: {
+          ref: "FormQuestion",
+          type: Schema.Types.ObjectId,
+          required: true,
+        },
+        answer: { type: Schema.Types.Mixed, required: false },
       },
-      answer: { type: Schema.Types.Mixed, required: false },
-    },
-  ],
+    ],
+    required: true,
+  },
   responderEmail: { type: String, required: false },
 });
 
