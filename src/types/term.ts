@@ -19,7 +19,7 @@ function isValidTerm(term: string): boolean {
   return true;
 }
 
-const zTerm = z.string().refine(isValidTerm);
+export const zTerm = z.string().refine(isValidTerm);
 
 export type Term = z.infer<typeof zTerm>;
 

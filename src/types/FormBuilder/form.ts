@@ -1,7 +1,7 @@
 import { z } from "zod";
 import base from "../base";
-import zFormResponse from "./formResponse";
 import zFormQuestion from "./formQuestion";
+import zFormResponse from "./formResponse";
 
 export const responderTypes = ["Member", "Student", "Anyone"] as const;
 export const zResponderType = z.enum(responderTypes);

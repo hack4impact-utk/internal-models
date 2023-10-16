@@ -1,5 +1,5 @@
 import { model, Schema, Document, models, Model } from "mongoose";
-import { FormResponse } from "../../../types/FormBuilder/formResponse";
+import { FormResponse } from "@/types/FormBuilder/formResponse";
 
 const FormResponseSchema = new Schema({
   form: { ref: "Form", type: Schema.Types.ObjectId, required: true },

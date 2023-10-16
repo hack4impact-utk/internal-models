@@ -1,8 +1,8 @@
 import { z } from 'zod';
-import zObjectId from './objectId';
+import objectIdSchema from './objectId';
 
-const zBase = z.object({
-  _id: zObjectId,
+export const zBase = z.object({
+  _id: objectIdSchema,
   createdAt: z.date(),
   updatedAt: z.date(),
 });

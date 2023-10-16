@@ -26,7 +26,7 @@ export type TeamMember = BaseTeamMember & {
   team: Team;
 };
 
-const zTeamMember: z.ZodType<TeamMember> = zBaseTeamMember.extend({
+export const zTeamMember: z.ZodType<TeamMember> = zBaseTeamMember.extend({
   member: z.lazy(() => zMember),
   team: z.lazy(() => zTeam),
 });

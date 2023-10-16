@@ -1,12 +1,21 @@
 {
-  "name": "internal-models",
-  "version": "1.0.0",
+  "name": "@hack4impact-utk/internal-models",
+  "version": "1.0.1",
   "description": "",
-  "main": "index.js",
+  "files": [
+    "dist/*"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "private": false,
+  "type": "commonjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsup",
+    "lint": "tsc",
+    "clean": "rm -rf node_modules dist"
   },
-  "author": "",
+  "author": "Hack4Impact UTK",
   "license": "ISC",
   "dependencies": {
     "bson": "^6.1.0",
@@ -14,6 +23,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "tsup": "^7.2.0",
     "typescript": "^5.2.2"
   }
 }

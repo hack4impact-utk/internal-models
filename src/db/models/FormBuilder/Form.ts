@@ -1,5 +1,5 @@
 import { model, Schema, Document, models, Model } from "mongoose";
-import { Form, responderTypes } from "../../../types/FormBuilder/form";
+import { Form, responderTypes } from "@/types/FormBuilder/form";
 
 const FormSchema = new Schema({
   questions: [

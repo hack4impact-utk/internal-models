@@ -1,7 +1,7 @@
-import base from "../base";
-import zForm, { Form } from "./form";
 import { z } from "zod";
 import zFormQuestion from "./formQuestion";
+import base from "../base";
+import zForm, { Form } from "./form";
 
 const zBaseFormResponse = base.extend({
   questionResponses: z.object({
@@ -13,7 +13,7 @@ const zBaseFormResponse = base.extend({
 
 export type FormResponse = z.infer<typeof zBaseFormResponse> & { form: Form };
 
-const zFormResponse: z.ZodType<FormResponse> = zBaseFormResponse.extend({
+export const zFormResponse: z.ZodType<FormResponse> = zBaseFormResponse.extend({
   form: z.lazy(() => zForm),
 });
 

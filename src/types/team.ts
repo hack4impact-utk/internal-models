@@ -5,7 +5,7 @@ import zTerm from './term';
 import zProject from './project';
 import zRoleOnboarding from './onboarding/roleOnboarding';
 
-const zTeam = zBase.extend({
+export const zTeam = zBase.extend({
   name: z.string(),
   members: zTeamMember.array(),
   terms: zTerm.array(),

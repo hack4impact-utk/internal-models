@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { TeamRole } from '../teamMember';
 import zOnboarding from './onboarding';
 
-const zRoleOnboarding = z.object({
+export const zRoleOnboarding = z.object({
   role: TeamRole,
   onboardings: zOnboarding.array(),
 });
