@@ -1,5 +1,5 @@
-import { z } from 'zod';
-import objectIdSchema from './objectId';
+import { z } from "zod";
+import objectIdSchema from "./objectId";
 
 export const zBase = z.object({
   _id: objectIdSchema,

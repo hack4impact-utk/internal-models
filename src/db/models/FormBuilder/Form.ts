@@ -15,12 +15,12 @@ const FormSchema = new Schema({
   },
   callbackUrl: { type: String, required: false },
   isAnonymous: { type: Boolean, required: true },
-  responses: [
-    { type: Schema.Types.ObjectId, ref: "FormResponse", required: true },
+  submissions: [
+    { type: Schema.Types.ObjectId, ref: "FormSubmission", required: true },
   ],
 });
 
-export type FormDocument = Omit<Form, "_id"> & Document;
+export type FormDocument = Form & Document;
 
 export default (models.Form as Model<FormDocument>) ||
   model<FormDocument>("Form", FormSchema, "forms");

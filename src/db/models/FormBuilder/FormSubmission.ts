@@ -1,7 +1,7 @@
 import { model, Schema, Document, models, Model } from "mongoose";
-import { FormResponse } from "@/types/FormBuilder/formResponse";
+import { FormSubmission } from "@/types/FormBuilder/formSubmission";
 
-const FormResponseSchema = new Schema({
+const FormSubmissionSchema = new Schema({
   form: { ref: "Form", type: Schema.Types.ObjectId, required: true },
   questionResponses: {
     type: [
@@ -19,11 +19,11 @@ const FormResponseSchema = new Schema({
   responderEmail: { type: String, required: false },
 });
 
-export type FormResponseDocument = Omit<FormResponse, "_id"> & Document;
+export type FormSubmissionDocument = Omit<FormSubmission, "_id"> & Document;
 
-export default (models.FormResponse as Model<FormResponseDocument>) ||
-  model<FormResponseDocument>(
-    "FormResponse",
-    FormResponseSchema,
-    "formResponses"
+export default (models.FormSubmission as Model<FormSubmissionDocument>) ||
+  model<FormSubmissionDocument>(
+    "FormSubmission",
+    FormSubmissionSchema,
+    "formSubmissions"
   );
