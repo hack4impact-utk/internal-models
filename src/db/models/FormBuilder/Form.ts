@@ -15,8 +15,8 @@ const FormSchema = new Schema({
   },
   callbackUrl: { type: String, required: false },
   isAnonymous: { type: Boolean, required: true },
-  responses: [
-    { type: Schema.Types.ObjectId, ref: "FormResponse", required: true },
+  submissions: [
+    { type: Schema.Types.ObjectId, ref: "FormSubmission", required: true },
   ],
 });
 

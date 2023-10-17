@@ -33,7 +33,7 @@ export type MultipleChoiceType = z.infer<typeof zMultipleChoiceType>;
 
 const zFormQuestionBase = z.object({
   title: z.string(),
-  description: z.string(),
+  description: z.string().optional(),
   isRequired: z.boolean(),
   questionType: zFormQuestionType,
   numericOptions: z
@@ -59,20 +59,19 @@ const zFormQuestionBase = z.object({
     .optional(),
 });
 
-
 export type FormQuestion = z.infer<typeof zFormQuestionBase> & { form: Form };
 const zFormQuestion: z.ZodType<FormQuestion> = zFormQuestionBase.extend({
   form: z.lazy(() => zForm),
 });
 
-export type FormQuestionResponse = z.infer<typeof zFormQuestionBase> & { form: Form } & Base;
-const zFormQuestionResponse: z.ZodType<FormQuestion> = zFormQuestionBase.extend({
-  form: z.lazy(() => zForm), ...zBase.shape
-});
+const zFormQuestionResponse: z.ZodType<FormQuestion> = zFormQuestionBase.extend(
+  {
+    form: z.lazy(() => zFormResponse),
+    ...zBase.shape,
+  }
+);
+export type FormQuestionResponse = z.infer<typeof zFormQuestionResponse>;
 
-export type CreateFormQuestionRequest = z.infer<typeof zForm
+export type CreateFormQuestionRequest = z.infer<typeof zForm>;
 
-
-
-
-// export default zFormQuestion;
+export default zFormQuestion;

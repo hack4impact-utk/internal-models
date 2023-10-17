@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { zBase } from "../base";
 import zFormQuestion from "./formQuestion";
-import zFormSubmission from "./formSubmission";
+import zFormSubmission, { zFormSubmissionResponse } from "./formSubmission";
 import zObjectId from "../objectId";
 
 export const responderTypes = ["Member", "Student", "Anyone"] as const;
@@ -13,14 +13,18 @@ const zForm = z.object({
   responderType: zResponderType,
   callbackUrl: z.string().optional(),
   isAnonymous: z.boolean(),
-  responses: z.array(zFormSubmission),
+  submissions: z.array(zFormSubmission),
 });
 
-const zCreateFormRequest = zForm.extend({
+export const zCreateFormRequest = zForm.extend({
   questions: z.array(zObjectId),
-  responses: z.array(zObjectId),
+  submissions: z.array(zObjectId),
 });
-const zFormResponse = zForm.extend(zBase.shape);
+
+export const zFormResponse = zForm.extend({
+  ...zBase.shape,
+  questions: z.array(zFormSubmissionResponse),
+});
 
 export type Form = z.infer<typeof zForm>;
 export type CreateFormRequest = z.infer<typeof zCreateFormRequest>;

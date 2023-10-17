@@ -1,23 +1,32 @@
 import { z } from "zod";
-import zFormQuestion from "./formQuestion";
-import base from "../base";
-import zForm, { Form } from "./form";
+import zBase from "../base";
+import zForm, { Form, zFormResponse } from "./form";
 
-const zBaseFormSubmission = base.extend({
+const zFormSubmissionBase = zBase.extend({
   questionResponses: z.object({
-    question: zFormQuestion,
+    title: z.string(),
+    description: z.string().optional(),
     answer: z.union([z.string(), z.number()]).optional(),
   }),
   responderEmail: z.string().optional(),
 });
 
-export type FormSubmission = z.infer<typeof zBaseFormSubmission> & {
+export type FormSubmission = z.infer<typeof zFormSubmissionBase> & {
   form: Form;
 };
-
 export const zFormSubmission: z.ZodType<FormSubmission> =
-  zBaseFormSubmission.extend({
+  zFormSubmissionBase.extend({
     form: z.lazy(() => zForm),
   });
+
+export const zFormSubmissionResponse = zFormSubmissionBase.extend({
+  form: zFormResponse,
+  ...zBase.shape,
+});
+
+export const zFormSubmissionRequest = zFormSubmissionBase.extend({});
+
+export type FormSubmissionResponse = z.infer<typeof zFormSubmissionResponse>;
+export type FormSubmissionRequest = z.infer<typeof zFormSubmissionRequest>;
 
 export default zFormSubmission;
